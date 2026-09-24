@@ -1,0 +1,22 @@
+# MyLLM
+
+> MyLLM is a private AI assistant app for iPhone, iPad and Android, made by Opticell Limited (UK). It runs open language models directly on the phone with llama.cpp — no account, no cloud, no telemetry — and can also connect to a model on the user's own computer or to their own cloud API key. Current iOS version: 5.6.2 (September 2026). First released 25 March 2026.
+
+Key facts:
+- Runs models on the device itself: Qwen 3.5 (2B, 4B, 9B), Gemma 4 E4B, Granite 4.2 3B, Hermes 3 3B, Llama 3.2 1B, Liquid LFM2, SmolLM2, Gemma 3 270M and others, plus any GGUF file the user adds. Also uses Apple Intelligence on supported iPhones.
+- The phone's own model can use tools (weather, web search, calendar, reminders, files, photo search) and read photos (Qwen 3.5, Gemma 4).
+- Works with no signal (Off-grid mode). A per-reply privacy ledger shows whether anything went online.
+- Attune: shapes how the on-device model answers from a described style, with no training and nothing added to the prompt.
+- MyLLMos: the assistant builds small apps; a gallery of 128 ready-made apps.
+- 45+ built-in tools, 80+ more in the tool marketplace, MCP client, Agent Skills.
+- Price (UK): free 7-day trial, then £0.99/month, £9.99/year or £19.99 once. No ads; every option unlocks everything.
+
+## Pages
+- [MyLLM facts](https://teamdzx.github.io/myllm/): what it is, what runs on the phone, privacy, pricing, FAQ
+- [App Store](https://apps.apple.com/app/myllm-local-ai-agent/id6760704297): iPhone and iPad (iOS 17 or later)
+- [Google Play](https://play.google.com/store/apps/details?id=com.opticell.myllm): Android
+- [Official site](https://www.opticell-limited.com/myllm): downloads, privacy policy and terms
+
+## Open source
+- [MyLLM Connect](https://github.com/TeamDzX/myllm-connect): free Mac/Windows companion (Apache-2.0) that pairs a computer's local model with the app by QR code
+- [MyLLM Skills](https://github.com/TeamDzX/myllm-skills): Agent Skills for MyLLM

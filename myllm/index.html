@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MyLLM — private AI that runs on your phone</title>
+<meta name="description" content="MyLLM is a private AI assistant for iPhone, iPad and Android that runs open models such as Qwen 3.5 and Gemma 4 directly on the phone. No account, no cloud, no telemetry. By Opticell Limited.">
+<link rel="canonical" href="https://teamdzx.github.io/myllm/">
+<meta property="og:title" content="MyLLM — private AI that runs on your phone">
+<meta property="og:description" content="Open models on your iPhone or Android phone, with tools, photos and apps — nothing leaves the device.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://teamdzx.github.io/myllm/">
+<meta name="theme-color" content="#4475fc">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "MyLLM - Local AI Agent",
+  "alternateName": "MyLLM",
+  "description": "A private AI assistant that runs open language models directly on iPhone, iPad and Android with llama.cpp, with tools, photo understanding and mini-apps. No account, no cloud, no telemetry.",
+  "operatingSystem": "iOS 17 or later, iPadOS, Android",
+  "applicationCategory": "UtilitiesApplication",
+  "softwareVersion": "5.6.2",
+  "datePublished": "2026-03-25",
+  "dateModified": "2026-09-24",
+  "url": "https://teamdzx.github.io/myllm/",
+  "installUrl": "https://apps.apple.com/app/myllm-local-ai-agent/id6760704297",
+  "sameAs": [
+    "https://apps.apple.com/app/myllm-local-ai-agent/id6760704297",
+    "https://play.google.com/store/apps/details?id=com.opticell.myllm",
+    "https://www.opticell-limited.com/myllm",
+    "https://github.com/TeamDzX/myllm-connect"
+  ],
+  "author": { "@type": "Organization", "name": "Opticell Limited", "url": "https://www.opticell-limited.com" },
+  "offers": [
+    { "@type": "Offer", "name": "Free trial", "price": "0", "priceCurrency": "GBP", "description": "7 days, every feature" },
+    { "@type": "Offer", "name": "Monthly", "price": "0.99", "priceCurrency": "GBP" },
+    { "@type": "Offer", "name": "Yearly", "price": "9.99", "priceCurrency": "GBP" },
+    { "@type": "Offer", "name": "Lifetime", "price": "19.99", "priceCurrency": "GBP" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is MyLLM?",
+      "acceptedAnswer": { "@type": "Answer", "text": "MyLLM is a private AI assistant app for iPhone, iPad and Android, made by Opticell Limited in the UK. It runs open language models directly on the phone, so chats work offline and nothing is sent to a cloud service." } },
+    { "@type": "Question", "name": "Which models run on the phone?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Qwen 3.5 (2B, 4B and 9B), Gemma 4 E4B, Granite 4.2 3B, Hermes 3 3B, Llama 3.2 1B, Liquid LFM2, SmolLM2, Gemma 3 270M and others, plus any GGUF model the user adds. Qwen 3.5 2B is recommended for most phones with 6 GB of memory or more; the 9B needs a 12 GB iPhone." } },
+    { "@type": "Question", "name": "Does MyLLM need an account or the internet?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. There is no account, sign-in or telemetry, and on-device models work with no connection. Tools such as web search and weather need a connection when they are used, and each reply shows whether anything went online." } },
+    { "@type": "Question", "name": "How much does MyLLM cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It is free for 7 days with every feature. After that: £0.99 a month, £9.99 a year, or £19.99 once for life. There are no ads and no feature tiers." } },
+    { "@type": "Question", "name": "Can it use a bigger model on my computer?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. MyLLM connects to Ollama, LM Studio or any OpenAI-compatible server, including through the free open-source MyLLM Connect app for Mac and Windows, and it also accepts your own API key for OpenAI, Anthropic, Gemini or OpenRouter." } }
+  ]
+}
+</script>
+<style>
+:root{--bg:#f2f2f7;--card:#fff;--ink:#1c1c1e;--muted:#6c6c70;--line:#e5e5ea;--accent:#4475fc;--accent-soft:rgba(68,117,252,.10)}
+@media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1c1c1e;--ink:#f2f2f7;--muted:#a1a1a6;--line:#2c2c2e;--accent:#6595ff;--accent-soft:rgba(101,149,255,.14)}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:760px;margin:0 auto;padding:48px 16px 64px}
+header p.eyebrow{margin:0 0 8px;color:var(--accent);font-weight:600;font-size:14px;letter-spacing:.02em;text-transform:uppercase}
+h1{font-size:clamp(30px,6vw,44px);line-height:1.1;margin:0 0 14px;letter-spacing:-.02em}
+.lede{font-size:19px;color:var(--muted);margin:0 0 22px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.cta a{display:inline-block;padding:11px 18px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px}
+.cta a.primary{background:var(--accent);color:#fff}
+.cta a.secondary{background:var(--accent-soft);color:var(--accent)}
+section{background:var(--card);border-radius:18px;padding:22px 22px 12px;margin:0 0 16px;border:1px solid var(--line)}
+h2{font-size:21px;margin:0 0 10px;letter-spacing:-.01em}
+ul{padding-left:20px;margin:0 0 12px}
+li{margin:0 0 6px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:4px 0 14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.03em}
+.tablewrap{overflow-x:auto}
+dt{font-weight:600;margin-top:12px}
+dd{margin:4px 0 0;color:var(--muted)}
+a{color:var(--accent)}
+footer{color:var(--muted);font-size:14px;margin-top:26px}
+.stamp{font-size:14px;color:var(--muted);margin:-8px 0 26px}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <p class="eyebrow">MyLLM · by Opticell Limited</p>
+  <h1>Private AI that runs on your phone</h1>
+  <p class="lede">MyLLM is an AI assistant for iPhone, iPad and Android that runs open language models directly on the device. No account, no cloud and no telemetry: your chats stay on hardware you control.</p>
+  <p class="stamp">Facts as of 24 September 2026 · iOS version 5.6.2 · first released 25 March 2026</p>
+  <div class="cta">
+    <a class="primary" href="https://apps.apple.com/app/myllm-local-ai-agent/id6760704297">App Store</a>
+    <a class="secondary" href="https://play.google.com/store/apps/details?id=com.opticell.myllm">Google Play</a>
+    <a class="secondary" href="https://www.opticell-limited.com/myllm">Official site</a>
+  </div>
+</header>
+
+<section>
+  <h2>In one paragraph</h2>
+  <p>MyLLM downloads an open model such as Qwen 3.5 or Gemma 4 onto the phone and runs it there with llama.cpp on the phone's GPU. The model can chat offline, use tools like the weather, web search, calendar and reminders, read photos, and build small apps. When a job needs a bigger model, MyLLM can connect to one on the user's own Mac or PC, or use the user's own cloud API key. It also uses Apple Intelligence on iPhones that support it.</p>
+</section>
+
+<section>
+  <h2>Models that run on the phone</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Model</th><th>Download</th><th>Needs</th><th>Can do</th></tr></thead>
+    <tbody>
+      <tr><td>Qwen 3.5 2B (recommended)</td><td>1.3 GB</td><td>6 GB phone</td><td>Tools, photos</td></tr>
+      <tr><td>Qwen 3.5 4B</td><td>2.7 GB</td><td>8 GB phone</td><td>Tools, photos</td></tr>
+      <tr><td>Gemma 4 E4B</td><td>4.2 GB</td><td>8 GB phone</td><td>Tools, photos</td></tr>
+      <tr><td>Qwen 3.5 9B</td><td>5.7 GB</td><td>12 GB phone (e.g. iPhone 17 Pro)</td><td>Tools, photos</td></tr>
+      <tr><td>Granite 4.2 3B</td><td>2.2 GB</td><td>6 GB phone</td><td>Tools</td></tr>
+      <tr><td>Hermes 3 3B</td><td>2.0 GB</td><td>6 GB phone</td><td>Tools</td></tr>
+      <tr><td>Llama 3.2 1B, Liquid LFM2 (350M, 1.2B), SmolLM2 1.7B, Gemma 3 270M, Qwen 2.5 0.5B and more</td><td>0.15–1.1 GB</td><td>Most phones</td><td>Chat</td></tr>
+      <tr><td>Hunyuan MT 1.5 1.8B</td><td>1.1 GB</td><td>3 GB phone</td><td>Translation, 33 languages</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Any other GGUF model can be added by link. Photo understanding for Qwen 3.5 and Gemma 4 is an optional second download.</p>
+</section>
+
+<section>
+  <h2>What the phone's own model does</h2>
+  <ul>
+    <li><strong>Tools, on the phone:</strong> date and time, weather, web search, reading a web page, location, calendar, reminders, shared files, and searching your photos (opt-in).</li>
+    <li><strong>Photos:</strong> describe a picture or read the text in it, without it leaving the device.</li>
+    <li><strong>Apps:</strong> ask for a tracker, a quiz or a game and it builds one you can keep, in MyLLMos, alongside a gallery of 128 ready-made apps.</li>
+    <li><strong>Off-grid mode:</strong> chat keeps working with no signal; if a server can't be reached, the phone model can carry on.</li>
+    <li><strong>Attune:</strong> describe how you like to be answered and the on-device model leans that way, with no training and nothing added to your messages.</li>
+    <li><strong>Summarise on This Phone:</strong> share a web page or picture from any app and get a summary made on the device.</li>
+    <li><strong>Learns quietly:</strong> while the phone is idle or charging, the model reads chats back for facts to remember, stored on the device and editable.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Privacy</h2>
+  <ul>
+    <li>No account, no sign-in, no telemetry, no ads.</li>
+    <li>On-device replies are recorded in a ledger on the phone that shows, for each reply, whether any tool went online.</li>
+    <li>The companion app and its pairing protocol are open source (Apache-2.0), so they can be checked.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Bigger models, your hardware</h2>
+  <ul>
+    <li>Connects to Ollama, LM Studio or any OpenAI-compatible server, on the home network or over HTTPS with a token.</li>
+    <li><a href="https://github.com/TeamDzX/myllm-connect">MyLLM Connect</a>: a free Mac and Windows app that pairs your computer's model with the phone by scanning a QR code.</li>
+    <li>Or bring your own API key for OpenAI, Anthropic, Gemini or OpenRouter.</li>
+    <li>45+ built-in tools, 80+ more one tap away, MCP servers and <a href="https://github.com/TeamDzX/myllm-skills">Agent Skills</a>.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Price</h2>
+  <p>Free for 7 days with everything included. Then £0.99 a month, £9.99 a year, or £19.99 once for life (UK prices). No ads, no tiers: every option unlocks all of MyLLM.</p>
+</section>
+
+<section>
+  <h2>Questions</h2>
+  <dl>
+    <dt>Is MyLLM a cloud chatbot?</dt>
+    <dd>No. By default the model runs on the phone. It only talks to a server you choose: your own computer, or a provider you hold a key for.</dd>
+    <dt>Which phones does it support?</dt>
+    <dd>iPhone and iPad on iOS 17 or later, and Android. Larger models need more memory; the app shows which ones your phone can run.</dd>
+    <dt>Who makes it?</dt>
+    <dd>Opticell Limited, a UK company.</dd>
+  </dl>
+</section>
+
+<footer>
+  <p>MyLLM is a product of Opticell Limited. Llama, Qwen, Gemma, Granite, Hermes and Apple Intelligence are trademarks of their owners. This page is kept up to date with each release; a plain-text summary is at <a href="/llms.txt">/llms.txt</a>.</p>
+</footer>
+</main>
+</body>
+</html>
