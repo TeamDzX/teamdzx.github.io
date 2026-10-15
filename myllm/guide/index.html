@@ -55,6 +55,15 @@ table{width:100%;border-collapse:collapse;font-size:15px;margin:4px 0 14px}
 th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
 th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.03em}
 .tablewrap{overflow-x:auto}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin:6px 0 16px}
+@media (max-width:560px){.shots{grid-template-columns:1fr 1fr;gap:12px}}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border-radius:22px;border:1px solid var(--line);background:var(--bg)}
+figcaption{font-size:13px;color:var(--muted);text-align:center;margin-top:6px;line-height:1.35}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:0 0 14px}
+.links a{display:block;padding:12px 14px;border-radius:14px;background:var(--accent-soft);text-decoration:none}
+.links a strong{display:block}
+.links a span{color:var(--muted);font-size:14px}
 .tip{background:var(--accent-soft);border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:16px}
 dt{font-weight:600;margin-top:14px}
 dd{margin:4px 0 0;color:var(--muted)}
@@ -75,7 +84,9 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
   <div class="cta">
     <a class="primary" href="https://apps.apple.com/app/myllm-local-ai-agent/id6760704297">App Store</a>
     <a href="https://play.google.com/store/apps/details?id=com.opticell.myllm">Google Play</a>
-    <a href="/myllm/wiki/">Tools, skills &amp; apps catalogue</a>
+    <a href="https://www.opticell-limited.com/myllm">Official site</a>
+    <a href="https://www.opticell-limited.com/myllm-wiki">Tool marketplace</a>
+    <a href="https://www.opticell-limited.com/myllm-os">MyLLMos apps</a>
   </div>
 </header>
 
@@ -86,6 +97,7 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
   <ol>
     <li><a href="#start">Getting started</a></li>
     <li><a href="#connection">Choosing who answers</a></li>
+    <li><a href="#connect">MyLLM Connect</a></li>
     <li><a href="#models">Models on your phone</a></li>
     <li><a href="#chat">Chatting</a></li>
     <li><a href="#safety">Stop, undo and permissions</a></li>
@@ -115,6 +127,11 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
     <li><span class="path">The model name at the top of a chat</span>: switch models, or use Deep Think for the next message.</li>
     <li><span class="path">The handle above the message box</span>: swipe up for MyLLMos, your apps and files.</li>
   </ul>
+  <div class="shots">
+    <figure><a href="img/onboarding.jpg"><img src="img/onboarding.jpg" alt="Choosing a model during setup" width="560" height="1218" loading="lazy"></a><figcaption>Setup: pick a model that runs on this iPhone</figcaption></figure>
+    <figure><a href="img/home.jpg"><img src="img/home.jpg" alt="The MyLLM start screen" width="560" height="1218" loading="lazy"></a><figcaption>The start screen, with quick-start ideas</figcaption></figure>
+    <figure><a href="img/settings.jpg"><img src="img/settings.jpg" alt="MyLLM Settings" width="560" height="1218" loading="lazy"></a><figcaption>Settings (gear, top right)</figcaption></figure>
+  </div>
 </section>
 
 <section id="connection">
@@ -127,10 +144,12 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
     <li><strong>Your own API key</strong> for OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Z.ai GLM, Moonshot Kimi, Alibaba Qwen, Mistral, xAI Grok or Groq.</li>
   </ul>
   <p>Once more than one is set up, tap the model name at the top of a chat to switch between them without opening Settings.</p>
+  <div class="shots">
+    <figure><a href="img/connection.jpg"><img src="img/connection.jpg" alt="Connection settings" width="560" height="1218" loading="lazy"></a><figcaption>Settings → Connection: on-device, your server or your own key</figcaption></figure>
+  </div>
 
   <h3>Using your own computer</h3>
-  <p>The easiest way is <strong>MyLLM Connect</strong>, a free, open-source app for Mac and Windows. Install it and open it, choose <em>Share with my phone</em>, then scan its QR code in <span class="path">Settings → Connection → Pair a Backend</span>. Your messages go straight from your phone to your computer over an encrypted link, at home or away, with no port forwarding. <a href="https://github.com/TeamDzX/myllm-connect/releases/latest">Download MyLLM Connect</a>.</p>
-  <p>Or point MyLLM at a server yourself:</p>
+  <p>The easiest way is <a href="#connect">MyLLM Connect</a> (next section). Or point MyLLM at a server yourself:</p>
   <ul>
     <li><strong>Ollama:</strong> install it from ollama.com, run <code>ollama pull qwen3:8b</code>, start it with <code>OLLAMA_HOST=0.0.0.0 ollama serve</code>, then enter <code>http://YOUR_COMPUTER_IP:11434</code> in MyLLM.</li>
     <li><strong>LM Studio:</strong> load a model, turn on <em>Serve on Local Network</em> in the Developer tab, start the server, then enter <code>http://YOUR_COMPUTER_IP:1234</code>.</li>
@@ -149,8 +168,21 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
   <div class="tip"><strong>Long chats on your own server:</strong> MyLLM sends Ollama a context size of 16K by default. If your model and computer allow more, raise it in <span class="path">Settings → Show developer options → Performance Tuning → Context window</span> so long chats and tool results fit.</div>
 </section>
 
+<section id="connect">
+  <h2>3. MyLLM Connect</h2>
+  <p><strong>MyLLM Connect</strong> is our free, open-source (Apache-2.0) companion for Mac and Windows. It turns your computer into your phone's private AI server, so you can use bigger models than a phone can hold.</p>
+  <ol>
+    <li>Install a model runner on your computer, such as Ollama or LM Studio, and download a model.</li>
+    <li>Download and open MyLLM Connect: <a href="https://github.com/TeamDzX/myllm-connect/releases/latest">macOS (signed, Apple Silicon and Intel) or Windows</a>.</li>
+    <li>Choose <em>Share with my phone</em>. A QR code appears.</li>
+    <li>In MyLLM, open <span class="path">Settings → Connection → Pair a Backend (scan QR)</span> and scan it.</li>
+  </ol>
+  <p>Your messages go straight from your phone to your own computer over an encrypted link, at home or away, with no port forwarding, certificates or cloud in the middle. Only your paired phone can use it: without its access key, every request is refused.</p>
+  <p>More on the <a href="https://www.opticell-limited.com/myllm-wiki#connect">MyLLM website</a> and in the <a href="https://github.com/TeamDzX/myllm-connect">source code on GitHub</a>.</p>
+</section>
+
 <section id="models">
-  <h2>3. Models on your phone</h2>
+  <h2>4. Models on your phone</h2>
   <p><span class="path">Settings → On this iPhone → Models</span> lists what your phone can run, best first. Models marked <strong>TOOLS</strong> can use the weather, web search, date, calendar, reminders and shared files.</p>
   <div class="tablewrap"><table>
     <thead><tr><th>Model</th><th>Download</th><th>Needs</th><th>Can do</th></tr></thead>
@@ -171,10 +203,14 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
     <li><strong>Attune</strong> (<span class="path">Settings → On this iPhone → Attune</span>): describe how you like to be answered, for example "short and direct", and the phone's model leans that way. Thumbs under its replies refine it. It changes the manner, not the facts, and needs no training.</li>
     <li><strong>Off-grid:</strong> with no signal the phone's model keeps chatting ("Off-grid" shows in the header). Web search and weather wait until you're back online. <span class="path">Settings → On this iPhone → Off-grid kit</span> shows what's ready.</li>
   </ul>
+  <div class="shots">
+    <figure><a href="img/onthisiphone.jpg"><img src="img/onthisiphone.jpg" alt="On this iPhone settings" width="560" height="1218" loading="lazy"></a><figcaption>On this iPhone: model, self-test, what it reads</figcaption></figure>
+    <figure><a href="img/models.jpg"><img src="img/models.jpg" alt="On-device models list" width="560" height="1218" loading="lazy"></a><figcaption>Models: what this iPhone can run, best first</figcaption></figure>
+  </div>
 </section>
 
 <section id="chat">
-  <h2>4. Chatting</h2>
+  <h2>5. Chatting</h2>
   <ul>
     <li><strong>Attach</strong> photos, PDFs and text files with the paperclip. The assistant reads the whole document.</li>
     <li><strong>Voice:</strong> tap the mic to speak, and long-press a reply → <em>Read Aloud</em> to hear it.</li>
@@ -184,10 +220,13 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
     <li><strong>Research Mode</strong> searches more widely and saves its answers with their sources. <strong>Walking Mode</strong> is hands-free voice: talk, pause, and it answers aloud.</li>
     <li><strong>History:</strong> swipe left on a chat to pin it, or swipe right to copy it.</li>
   </ul>
+  <div class="shots">
+    <figure><a href="img/chat.jpg"><img src="img/chat.jpg" alt="A chat using the weather and reminder tools" width="560" height="1218" loading="lazy"></a><figcaption>A reply that used two tools; each shows as a chip</figcaption></figure>
+  </div>
 </section>
 
 <section id="safety">
-  <h2>5. Stop, undo and permissions</h2>
+  <h2>6. Stop, undo and permissions</h2>
   <ul>
     <li>The <strong>■</strong> button ends a reply at once, even in the middle of a tool. Anything a tool already finished stays done.</li>
     <li>Under each reply, a chip shows every tool that ran. Saves read as receipts ("Saved · notes/todo.md", "Remembered"), and failures show in red.</li>
@@ -197,7 +236,7 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
 </section>
 
 <section id="bots">
-  <h2>6. Bots</h2>
+  <h2>7. Bots</h2>
   <p>Bots are assistants with their own job. Open them from <span class="path">••• → Bots</span>.</p>
   <ul>
     <li>Tap a bot to chat with it. Its <strong>ⓘ</strong> button opens its page, where you can change its icon, name, job and how it talks, and read its notebook (<code>Bots/&lt;Name&gt;.md</code> in MyLLMos → Files).</li>
@@ -205,33 +244,44 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
     <li><strong>Duties</strong> are jobs a bot does by itself: at a time, when files in a folder change, or when a system in your Command Center needs attention. A new chat opens with a <em>While you were away</em> card listing what each bot did.</li>
     <li>Duties on the phone's own model run when the app is idle or overnight on the charger. They need <span class="path">Settings → On this iPhone → Learn in quiet moments</span> switched on.</li>
   </ul>
+  <div class="shots">
+    <figure><a href="img/bots.jpg"><img src="img/bots.jpg" alt="The Bots list" width="560" height="1218" loading="lazy"></a><figcaption>••• → Bots</figcaption></figure>
+    <figure><a href="img/planner.jpg"><img src="img/planner.jpg" alt="The Daily Planner bot's page" width="560" height="1218" loading="lazy"></a><figcaption>A bot's page: how it talks, notebook and duties</figcaption></figure>
+  </div>
 </section>
 
 <section id="apps">
-  <h2>7. Apps (MyLLMos)</h2>
+  <h2>8. Apps (MyLLMos)</h2>
   <ul>
     <li><strong>Ask for an app</strong>, such as "make me a habit tracker", a quiz or a game. It appears as a card you can open and save.</li>
     <li><strong>MyLLMos:</strong> swipe up from the handle above the message box to see your saved apps and the shared Files.</li>
-    <li><strong>App Gallery:</strong> 128 ready-made apps by category, with an Updates chip that updates them all in one go. Apps keep their data across updates. You can also browse it <a href="https://www.opticell-limited.com/myllm-os">on the web</a>.</li>
+    <li><strong>App Gallery:</strong> 128 ready-made apps by category, with an Updates chip that updates them all in one go. Apps keep their data across updates. You can also browse it on the web at <a href="https://www.opticell-limited.com/myllm-os">opticell-limited.com/myllm-os</a>.</li>
     <li><strong>Changing an app:</strong> ask the assistant. It edits the app, checks it for errors out of sight, and fixes them before saying it's done. That needs your own server or a cloud model. With the phone's own model, use the Shell app instead: its <code>apps/</code> folder holds your apps as files, edited a few lines at a time. <em>Edit in Chat</em> offers both.</li>
     <li><strong>From other AI chats:</strong> share code or text from any app to MyLLM and choose <em>Save as App</em> or <em>Save to Documents</em>. The <a href="/myllm/wiki/#apps">send-to-myllm skill</a> teaches other AI tools to package things for this.</li>
     <li>Pinned apps also appear on the chat's start screen. On iPhones with LiDAR, Room Scanner turns a room into a floor plan.</li>
   </ul>
+  <div class="shots">
+    <figure><a href="img/gallery.jpg"><img src="img/gallery.jpg" alt="The MyLLMos App Gallery" width="560" height="1218" loading="lazy"></a><figcaption>MyLLMos → App Gallery</figcaption></figure>
+  </div>
 </section>
 
 <section id="tools">
-  <h2>8. Tools, skills and MCP</h2>
+  <h2>9. Tools, skills and MCP</h2>
   <p>MyLLM has more than 45 built-in tools, including web search, weather, files, calendar, reminders, contacts, photos, maps, email and code. Only the tools a message needs are sent with it. To see or switch them off, open <span class="path">Settings → Manage Built-in Tools</span>.</p>
   <h3>Add more tools</h3>
-  <p>The <a href="/myllm/wiki/">tools, skills &amp; apps catalogue</a> has 80+ more tools, installed with one tap. Each install shows you what the tool does and whether it uses the internet before anything is added. You can also paste a tool's JSON in <span class="path">Settings → About → Tools Available → ⋯ → Import from JSON</span>.</p>
+  <p>The tool marketplace (<a href="https://www.opticell-limited.com/myllm-wiki">opticell-limited.com/myllm-wiki</a>, also <a href="/myllm/wiki/">mirrored here</a>) has 80+ more tools, installed with one tap. Each install shows you what the tool does and whether it uses the internet before anything is added. You can also paste a tool's JSON in <span class="path">Settings → About → Tools Available → ⋯ → Import from JSON</span>.</p>
   <h3>Skills</h3>
   <p>Skills are reusable instructions in the open Agent Skills format: the model loads a skill when a task needs it. Browse them in <span class="path">MyLLMos → Skills</span>, on the <a href="/myllm/wiki/#skills">catalogue</a>, or in chat with <code>/skill add teamdzx/myllm-skills</code>. You can also ask the assistant to research a topic and write you a new skill.</p>
   <h3>MCP servers</h3>
   <p><span class="path">Settings → MCP Servers</span> connects outside tool servers (Model Context Protocol) over HTTPS with a token. Their tools join the assistant's own. On each server's page you can switch tools off. Tools marked <em>Writes</em> ask for your OK before their first use in a chat. MyLLM uses the Streamable HTTP transport; stdio-only servers need a bridge such as <code>mcp-proxy</code>. See the <a href="/myllm/wiki/#mcp">recommended servers</a>.</p>
+  <div class="shots">
+    <figure><a href="img/skills.jpg"><img src="img/skills.jpg" alt="The Skills screen" width="560" height="1218" loading="lazy"></a><figcaption>Settings → Skills</figcaption></figure>
+    <figure><a href="img/mcp.jpg"><img src="img/mcp.jpg" alt="MCP Servers screen" width="560" height="1218" loading="lazy"></a><figcaption>Settings → MCP Servers</figcaption></figure>
+  </div>
 </section>
 
 <section id="memory">
-  <h2>9. Memory and privacy</h2>
+  <h2>10. Memory and privacy</h2>
   <ul>
     <li><strong>Memory</strong> (<span class="path">Settings → Memory</span>): facts MyLLM keeps about you, stored on the device, which you can view, edit and delete. They're used only when a message is about you. <em>Learn in quiet moments</em> lets the phone's model pick facts out of chats while the phone is idle or charging.</li>
     <li><strong>No account, no telemetry, no ads.</strong> Chats, memory and files are stored on the device.</li>
@@ -239,10 +289,13 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
     <li>With your own server or an API key, messages go only to that server or provider, never to us.</li>
     <li><strong>Ask your photos</strong> (<span class="path">Settings → On this iPhone</span>) indexes your photo library on the phone, so you can ask "find my screenshot about…".</li>
   </ul>
+  <div class="shots">
+    <figure><a href="img/memory.jpg"><img src="img/memory.jpg" alt="Memory settings" width="560" height="1218" loading="lazy"></a><figcaption>Settings → Memory</figcaption></figure>
+  </div>
 </section>
 
 <section id="automations">
-  <h2>10. Automations, Siri and widgets</h2>
+  <h2>11. Automations, Siri and widgets</h2>
   <ul>
     <li><strong>Automations:</strong> <span class="path">Settings → Agents &amp; Automations</span> holds jobs that run on a schedule or when files change.</li>
     <li><strong>Siri and Shortcuts:</strong> Ask MyLLM, Summarise on This Phone, New Chat, Generate Image, Check Email, Voice Input, Web Search, Brief Me, Summarise URL and Open Saved App. Say "Ask MyLLM" to Siri, or use them in your own shortcuts and on the Action button.</li>
@@ -253,7 +306,7 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
 </section>
 
 <section id="media">
-  <h2>11. Image and video generation</h2>
+  <h2>12. Image and video generation</h2>
   <p>MyLLM creates images (FLUX.2-klein) and video (Wan 2.2 TI2V-5B) on <strong>your own ComfyUI server</strong>, with no cloud and no per-image fees.</p>
   <ol>
     <li>Open <span class="path">Settings → Image &amp; Video Generation</span>.</li>
@@ -264,17 +317,17 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
 </section>
 
 <section id="price">
-  <h2>12. Price</h2>
+  <h2>13. Price</h2>
   <p>Free for 7 days with everything included. Then £0.99 a month, £9.99 a year, or £29.99 once for life (UK prices). There are no ads and no tiers: every option unlocks everything. <span class="path">Settings → MyLLM Full Version</span> shows what you have and restores a past purchase.</p>
 </section>
 
 <section id="android">
-  <h2>13. Android</h2>
+  <h2>14. Android</h2>
   <p>MyLLM for Android (<a href="https://play.google.com/store/apps/details?id=com.opticell.myllm">Google Play</a>) covers the same core: chat, models on the phone, your own server or API key, tools and documents. This guide follows the iPhone app. Some screens are arranged differently on Android, and iPhone-only features such as Siri, widgets and room scanning aren't there.</p>
 </section>
 
 <section id="troubleshooting">
-  <h2>14. Troubleshooting</h2>
+  <h2>15. Troubleshooting</h2>
   <dl>
     <dt>MyLLM can't reach my server.</dt>
     <dd>Make sure the phone and computer are on the same network, and that Ollama was started with <code>OLLAMA_HOST=0.0.0.0</code> (LM Studio: <em>Serve on Local Network</em>). Use the computer's local IP address, not <code>localhost</code>. Away from home, use MyLLM Connect, or HTTPS with a token.</dd>
@@ -287,6 +340,16 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
     <dt>Is my data sent anywhere?</dt>
     <dd>With the phone's model, nothing leaves the device unless a tool goes online, and the ledger shows when one did. With a server or API key, messages go only there.</dd>
   </dl>
+</section>
+
+<section id="links">
+  <h2>More from us</h2>
+  <div class="links">
+    <a href="https://www.opticell-limited.com/myllm"><strong>MyLLM website</strong><span>Downloads, privacy policy and terms</span></a>
+    <a href="https://www.opticell-limited.com/myllm-wiki"><strong>Tool marketplace</strong><span>One-tap tools, skills, Connect, MCP</span></a>
+    <a href="https://www.opticell-limited.com/myllm-os"><strong>MyLLMos apps</strong><span>The app gallery on the web</span></a>
+    <a href="https://github.com/TeamDzX/myllm-connect"><strong>MyLLM Connect</strong><span>Free Mac and Windows companion</span></a>
+  </div>
 </section>
 
 <footer>

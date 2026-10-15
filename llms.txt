@@ -20,6 +20,8 @@ Key facts:
 - [App Store](https://apps.apple.com/app/myllm-local-ai-agent/id6760704297): iPhone and iPad (iOS 17 or later)
 - [Google Play](https://play.google.com/store/apps/details?id=com.opticell.myllm): Android
 - [Official site](https://www.opticell-limited.com/myllm): downloads, privacy policy and terms
+- [Tool marketplace](https://www.opticell-limited.com/myllm-wiki): one-tap tools, starter skills, MyLLM Connect downloads, image/video setup, MCP servers
+- [MyLLMos app gallery](https://www.opticell-limited.com/myllm-os): 128 ready-made mini-apps for MyLLM
 
 ## Open source
 - [MyLLM Connect](https://github.com/TeamDzX/myllm-connect): free Mac/Windows companion (Apache-2.0) that pairs a computer's local model with the app by QR code
