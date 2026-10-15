@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MyLLM User Guide</title>
+<meta name="description" content="How to use MyLLM on iPhone and iPad: choosing a model, connecting your own server or API key, bots, apps, tools, skills, MCP, memory, privacy, Siri, image generation and troubleshooting.">
+<link rel="canonical" href="https://teamdzx.github.io/myllm/guide/">
+<meta property="og:title" content="MyLLM User Guide">
+<meta property="og:description" content="Everything MyLLM can do and where to find it, kept up to date with each release.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://teamdzx.github.io/myllm/guide/">
+<meta name="theme-color" content="#4475fc">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "MyLLM User Guide",
+  "about": { "@type": "MobileApplication", "name": "MyLLM - Local AI Agent", "softwareVersion": "5.9.8" },
+  "dateModified": "2026-10-15",
+  "author": { "@type": "Organization", "name": "Opticell Limited", "url": "https://www.opticell-limited.com" },
+  "url": "https://teamdzx.github.io/myllm/guide/"
+}
+</script>
+<style>
+:root{--bg:#f2f2f7;--card:#fff;--ink:#1c1c1e;--muted:#6c6c70;--line:#e5e5ea;--accent:#4475fc;--accent-soft:rgba(68,117,252,.10);--code:#ececf1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--card:#1c1c1e;--ink:#f2f2f7;--muted:#a1a1a6;--line:#2c2c2e;--accent:#6595ff;--accent-soft:rgba(101,149,255,.14);--code:#2c2c2e}}
+:root[data-theme="dark"]{--bg:#000;--card:#1c1c1e;--ink:#f2f2f7;--muted:#a1a1a6;--line:#2c2c2e;--accent:#6595ff;--accent-soft:rgba(101,149,255,.14);--code:#2c2c2e}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:800px;margin:0 auto;padding:44px 16px 64px}
+.eyebrow{margin:0 0 8px;color:var(--accent);font-weight:600;font-size:14px;letter-spacing:.02em;text-transform:uppercase}
+.eyebrow a{color:inherit;text-decoration:none}
+h1{font-size:clamp(30px,6vw,42px);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}
+.lede{font-size:19px;color:var(--muted);margin:0 0 10px}
+.stamp{font-size:14px;color:var(--muted);margin:0 0 24px}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin:0 0 20px}
+nav.toc h2{font-size:15px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:0 0 8px}
+nav.toc ol{columns:2;column-gap:28px;margin:0;padding-left:22px}
+@media (max-width:560px){nav.toc ol{columns:1}}
+nav.toc li{margin:0 0 4px;break-inside:avoid}
+section{background:var(--card);border-radius:18px;padding:22px 22px 10px;margin:0 0 16px;border:1px solid var(--line)}
+h2{font-size:23px;margin:0 0 10px;letter-spacing:-.01em}
+h3{font-size:18px;margin:20px 0 6px}
+p{margin:0 0 12px}
+ul,ol{padding-left:22px;margin:0 0 12px}
+li{margin:0 0 6px}
+.path{font-weight:600;white-space:nowrap}
+@media (max-width:560px){.path{white-space:normal}}
+code{background:var(--code);border-radius:6px;padding:1px 6px;font:14px ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}
+pre{background:var(--code);border-radius:10px;padding:12px 14px;overflow-x:auto;font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;margin:0 0 12px}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:4px 0 14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.03em}
+.tablewrap{overflow-x:auto}
+.tip{background:var(--accent-soft);border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:16px}
+dt{font-weight:600;margin-top:14px}
+dd{margin:4px 0 0;color:var(--muted)}
+a{color:var(--accent)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px}
+.cta a{display:inline-block;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px;background:var(--accent-soft);color:var(--accent)}
+.cta a.primary{background:var(--accent);color:#fff}
+footer{color:var(--muted);font-size:14px;margin-top:26px}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <p class="eyebrow"><a href="/myllm/">MyLLM</a> · User guide</p>
+  <h1>How to use MyLLM</h1>
+  <p class="lede">Everything MyLLM can do and where to find it in the app.</p>
+  <p class="stamp">Up to date with MyLLM 5.9.8 for iPhone and iPad · updated 15 October 2026</p>
+  <div class="cta">
+    <a class="primary" href="https://apps.apple.com/app/myllm-local-ai-agent/id6760704297">App Store</a>
+    <a href="https://play.google.com/store/apps/details?id=com.opticell.myllm">Google Play</a>
+    <a href="/myllm/wiki/">Tools, skills &amp; apps catalogue</a>
+  </div>
+</header>
+
+<div class="tip"><strong>The fastest help is inside the app.</strong> Ask MyLLM itself: "how do I add my own server?", "what can you do?", "how do bots work?" or "what's new?". It answers for the version you have, including where each setting is.</div>
+
+<nav class="toc" aria-label="Contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#start">Getting started</a></li>
+    <li><a href="#connection">Choosing who answers</a></li>
+    <li><a href="#models">Models on your phone</a></li>
+    <li><a href="#chat">Chatting</a></li>
+    <li><a href="#safety">Stop, undo and permissions</a></li>
+    <li><a href="#bots">Bots</a></li>
+    <li><a href="#apps">Apps (MyLLMos)</a></li>
+    <li><a href="#tools">Tools, skills and MCP</a></li>
+    <li><a href="#memory">Memory and privacy</a></li>
+    <li><a href="#automations">Automations, Siri and widgets</a></li>
+    <li><a href="#media">Image and video generation</a></li>
+    <li><a href="#price">Price</a></li>
+    <li><a href="#android">Android</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+  </ol>
+</nav>
+
+<section id="start">
+  <h2>1. Getting started</h2>
+  <ol>
+    <li><strong>Pick who answers.</strong> The first screens ask whether to use a model on this phone, a computer of yours, or a cloud provider you have an API key for. You can change this at any time.</li>
+    <li><strong>On the phone:</strong> choose a model from the list. MyLLM shows only the models your phone can run, best first, and the download carries on in the background.</li>
+    <li><strong>Start chatting.</strong> Type in the message box at the bottom, or tap the mic to speak.</li>
+  </ol>
+  <p>Where things are:</p>
+  <ul>
+    <li><span class="path">Gear (top right)</span>: Settings.</li>
+    <li><span class="path">••• (top left)</span>: Bots, Agent Mode, Plan Mode, Research Mode, Voice Input and Walking Mode.</li>
+    <li><span class="path">The model name at the top of a chat</span>: switch models, or use Deep Think for the next message.</li>
+    <li><span class="path">The handle above the message box</span>: swipe up for MyLLMos, your apps and files.</li>
+  </ul>
+</section>
+
+<section id="connection">
+  <h2>2. Choosing who answers</h2>
+  <p><span class="path">Settings → Connection</span> chooses who answers your messages:</p>
+  <ul>
+    <li><strong>The model on this phone.</strong> Private and works offline. See <a href="#models">Models on your phone</a>.</li>
+    <li><strong>Apple Intelligence</strong>, on iPhones that support it.</li>
+    <li><strong>Your own server</strong>: Ollama, LM Studio or any OpenAI-compatible server, on your home network or over HTTPS with a token.</li>
+    <li><strong>Your own API key</strong> for OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Z.ai GLM, Moonshot Kimi, Alibaba Qwen, Mistral, xAI Grok or Groq.</li>
+  </ul>
+  <p>Once more than one is set up, tap the model name at the top of a chat to switch between them without opening Settings.</p>
+
+  <h3>Using your own computer</h3>
+  <p>The easiest way is <strong>MyLLM Connect</strong>, a free, open-source app for Mac and Windows. Install it and open it, choose <em>Share with my phone</em>, then scan its QR code in <span class="path">Settings → Connection → Pair a Backend</span>. Your messages go straight from your phone to your computer over an encrypted link, at home or away, with no port forwarding. <a href="https://github.com/TeamDzX/myllm-connect/releases/latest">Download MyLLM Connect</a>.</p>
+  <p>Or point MyLLM at a server yourself:</p>
+  <ul>
+    <li><strong>Ollama:</strong> install it from ollama.com, run <code>ollama pull qwen3:8b</code>, start it with <code>OLLAMA_HOST=0.0.0.0 ollama serve</code>, then enter <code>http://YOUR_COMPUTER_IP:11434</code> in MyLLM.</li>
+    <li><strong>LM Studio:</strong> load a model, turn on <em>Serve on Local Network</em> in the Developer tab, start the server, then enter <code>http://YOUR_COMPUTER_IP:1234</code>.</li>
+  </ul>
+  <p>What your computer can run depends mostly on its memory (figures for the common Q4 size):</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Model size</th><th>Memory needed</th><th>Good for</th></tr></thead>
+    <tbody>
+      <tr><td>7–8B</td><td>~6–8 GB</td><td>Fast everyday chat on a laptop</td></tr>
+      <tr><td>13–14B</td><td>~10–12 GB</td><td>Stronger reasoning</td></tr>
+      <tr><td>30–34B</td><td>~20–24 GB</td><td>High quality: a 24 GB GPU or 32 GB Mac</td></tr>
+      <tr><td>70B</td><td>~40–48 GB</td><td>Top tier: workstation GPU or 64 GB+ Mac</td></tr>
+    </tbody>
+  </table></div>
+  <p>On Apple Silicon, unified memory counts as GPU memory. Models of 8B and up use tools much more reliably than smaller ones.</p>
+  <div class="tip"><strong>Long chats on your own server:</strong> MyLLM sends Ollama a context size of 16K by default. If your model and computer allow more, raise it in <span class="path">Settings → Show developer options → Performance Tuning → Context window</span> so long chats and tool results fit.</div>
+</section>
+
+<section id="models">
+  <h2>3. Models on your phone</h2>
+  <p><span class="path">Settings → On this iPhone → Models</span> lists what your phone can run, best first. Models marked <strong>TOOLS</strong> can use the weather, web search, date, calendar, reminders and shared files.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Model</th><th>Download</th><th>Needs</th><th>Can do</th></tr></thead>
+    <tbody>
+      <tr><td>Qwen 3.5 2B (recommended for most phones)</td><td>1.3 GB</td><td>6 GB phone</td><td>Tools, photos</td></tr>
+      <tr><td>MiniCPM5 2B</td><td>1.6 GB</td><td>4 GB phone</td><td>Tools</td></tr>
+      <tr><td>Gemma 4 E2B</td><td>2.6 GB</td><td>6 GB phone</td><td>Tools, photos</td></tr>
+      <tr><td>Granite 4.2 3B, Hermes 3 3B</td><td>2.0–2.2 GB</td><td>6 GB phone</td><td>Tools</td></tr>
+      <tr><td>Qwen 3.5 4B, Gemma 4 E4B</td><td>2.7–4.2 GB</td><td>8 GB phone</td><td>Tools, photos</td></tr>
+      <tr><td>Qwen 3.5 9B</td><td>5.7 GB</td><td>12 GB phone</td><td>Tools, photos</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>Photos:</strong> tap <em>Add vision</em> on Qwen 3.5 or Gemma 4 so it can read pictures, all on the phone.</li>
+    <li><strong>More models:</strong> browse Hugging Face from the Models screen, or add any GGUF file by link.</li>
+    <li><strong>Self-test</strong> (<span class="path">Settings → On this iPhone → Self-test</span>) checks that the model works, in about a minute.</li>
+    <li><strong>What the model reads</strong> (<span class="path">Settings → On this iPhone → What the model reads</span>): <em>Short memory</em> sends only the recent part of a chat, which is faster and cooler but forgets older messages. When a reply has to read the whole chat again, the status line says why.</li>
+    <li><strong>Attune</strong> (<span class="path">Settings → On this iPhone → Attune</span>): describe how you like to be answered, for example "short and direct", and the phone's model leans that way. Thumbs under its replies refine it. It changes the manner, not the facts, and needs no training.</li>
+    <li><strong>Off-grid:</strong> with no signal the phone's model keeps chatting ("Off-grid" shows in the header). Web search and weather wait until you're back online. <span class="path">Settings → On this iPhone → Off-grid kit</span> shows what's ready.</li>
+  </ul>
+</section>
+
+<section id="chat">
+  <h2>4. Chatting</h2>
+  <ul>
+    <li><strong>Attach</strong> photos, PDFs and text files with the paperclip. The assistant reads the whole document.</li>
+    <li><strong>Voice:</strong> tap the mic to speak, and long-press a reply → <em>Read Aloud</em> to hear it.</li>
+    <li><strong>Deep Think:</strong> tap the model name → <em>Deep Think next message</em> for a harder question.</li>
+    <li><strong>Agent Mode</strong> (••• menu): the assistant chains tools over many steps to finish a job, such as "research X and write a summary" or "tidy my shared files into folders".</li>
+    <li><strong>Plan Mode:</strong> it writes a numbered plan for you to approve before it starts.</li>
+    <li><strong>Research Mode</strong> searches more widely and saves its answers with their sources. <strong>Walking Mode</strong> is hands-free voice: talk, pause, and it answers aloud.</li>
+    <li><strong>History:</strong> swipe left on a chat to pin it, or swipe right to copy it.</li>
+  </ul>
+</section>
+
+<section id="safety">
+  <h2>5. Stop, undo and permissions</h2>
+  <ul>
+    <li>The <strong>■</strong> button ends a reply at once, even in the middle of a tool. Anything a tool already finished stays done.</li>
+    <li>Under each reply, a chip shows every tool that ran. Saves read as receipts ("Saved · notes/todo.md", "Remembered"), and failures show in red.</li>
+    <li>Deleting files, sending email, adding calendar events or reminders, running a Shortcut, opening a link and saving a skill ask for your OK once per chat. <span class="path">Settings → Built-in Tools → Tool Permissions</span> sets any tool to Auto, Ask or Deny.</li>
+    <li><strong>Undo:</strong> shared files keep their last five versions (Shell app: <code>history</code>, then <code>revert</code>). You can delete memories in <span class="path">Settings → Memory</span>.</li>
+  </ul>
+</section>
+
+<section id="bots">
+  <h2>6. Bots</h2>
+  <p>Bots are assistants with their own job. Open them from <span class="path">••• → Bots</span>.</p>
+  <ul>
+    <li>Tap a bot to chat with it. Its <strong>ⓘ</strong> button opens its page, where you can change its icon, name, job and how it talks, and read its notebook (<code>Bots/&lt;Name&gt;.md</code> in MyLLMos → Files).</li>
+    <li>Start a message with <strong>@Name</strong> to hand the chat to that bot, or type <strong>@</strong> to list them. <strong>@myllm</strong> returns you to the default assistant.</li>
+    <li><strong>Duties</strong> are jobs a bot does by itself: at a time, when files in a folder change, or when a system in your Command Center needs attention. A new chat opens with a <em>While you were away</em> card listing what each bot did.</li>
+    <li>Duties on the phone's own model run when the app is idle or overnight on the charger. They need <span class="path">Settings → On this iPhone → Learn in quiet moments</span> switched on.</li>
+  </ul>
+</section>
+
+<section id="apps">
+  <h2>7. Apps (MyLLMos)</h2>
+  <ul>
+    <li><strong>Ask for an app</strong>, such as "make me a habit tracker", a quiz or a game. It appears as a card you can open and save.</li>
+    <li><strong>MyLLMos:</strong> swipe up from the handle above the message box to see your saved apps and the shared Files.</li>
+    <li><strong>App Gallery:</strong> 128 ready-made apps by category, with an Updates chip that updates them all in one go. Apps keep their data across updates. You can also browse it <a href="https://www.opticell-limited.com/myllm-os">on the web</a>.</li>
+    <li><strong>Changing an app:</strong> ask the assistant. It edits the app, checks it for errors out of sight, and fixes them before saying it's done. That needs your own server or a cloud model. With the phone's own model, use the Shell app instead: its <code>apps/</code> folder holds your apps as files, edited a few lines at a time. <em>Edit in Chat</em> offers both.</li>
+    <li><strong>From other AI chats:</strong> share code or text from any app to MyLLM and choose <em>Save as App</em> or <em>Save to Documents</em>. The <a href="/myllm/wiki/#apps">send-to-myllm skill</a> teaches other AI tools to package things for this.</li>
+    <li>Pinned apps also appear on the chat's start screen. On iPhones with LiDAR, Room Scanner turns a room into a floor plan.</li>
+  </ul>
+</section>
+
+<section id="tools">
+  <h2>8. Tools, skills and MCP</h2>
+  <p>MyLLM has more than 45 built-in tools, including web search, weather, files, calendar, reminders, contacts, photos, maps, email and code. Only the tools a message needs are sent with it. To see or switch them off, open <span class="path">Settings → Manage Built-in Tools</span>.</p>
+  <h3>Add more tools</h3>
+  <p>The <a href="/myllm/wiki/">tools, skills &amp; apps catalogue</a> has 80+ more tools, installed with one tap. Each install shows you what the tool does and whether it uses the internet before anything is added. You can also paste a tool's JSON in <span class="path">Settings → About → Tools Available → ⋯ → Import from JSON</span>.</p>
+  <h3>Skills</h3>
+  <p>Skills are reusable instructions in the open Agent Skills format: the model loads a skill when a task needs it. Browse them in <span class="path">MyLLMos → Skills</span>, on the <a href="/myllm/wiki/#skills">catalogue</a>, or in chat with <code>/skill add teamdzx/myllm-skills</code>. You can also ask the assistant to research a topic and write you a new skill.</p>
+  <h3>MCP servers</h3>
+  <p><span class="path">Settings → MCP Servers</span> connects outside tool servers (Model Context Protocol) over HTTPS with a token. Their tools join the assistant's own. On each server's page you can switch tools off. Tools marked <em>Writes</em> ask for your OK before their first use in a chat. MyLLM uses the Streamable HTTP transport; stdio-only servers need a bridge such as <code>mcp-proxy</code>. See the <a href="/myllm/wiki/#mcp">recommended servers</a>.</p>
+</section>
+
+<section id="memory">
+  <h2>9. Memory and privacy</h2>
+  <ul>
+    <li><strong>Memory</strong> (<span class="path">Settings → Memory</span>): facts MyLLM keeps about you, stored on the device, which you can view, edit and delete. They're used only when a message is about you. <em>Learn in quiet moments</em> lets the phone's model pick facts out of chats while the phone is idle or charging.</li>
+    <li><strong>No account, no telemetry, no ads.</strong> Chats, memory and files are stored on the device.</li>
+    <li>Replies from the phone's model show a shield. <span class="path">Settings → On this iPhone → On-device ledger</span> lists every reply and whether any tool went online for it.</li>
+    <li>With your own server or an API key, messages go only to that server or provider, never to us.</li>
+    <li><strong>Ask your photos</strong> (<span class="path">Settings → On this iPhone</span>) indexes your photo library on the phone, so you can ask "find my screenshot about…".</li>
+  </ul>
+</section>
+
+<section id="automations">
+  <h2>10. Automations, Siri and widgets</h2>
+  <ul>
+    <li><strong>Automations:</strong> <span class="path">Settings → Agents &amp; Automations</span> holds jobs that run on a schedule or when files change.</li>
+    <li><strong>Siri and Shortcuts:</strong> Ask MyLLM, Summarise on This Phone, New Chat, Generate Image, Check Email, Voice Input, Web Search, Brief Me, Summarise URL and Open Saved App. Say "Ask MyLLM" to Siri, or use them in your own shortcuts and on the Action button.</li>
+    <li><strong>Share sheet:</strong> from Safari or any app, share text, a link or a photo to MyLLM. A shared page can be summarised privately on the phone.</li>
+    <li><strong>Widgets:</strong> a Home Screen widget shows the last answer. Control Centre buttons start a new chat, voice input or an email check. A Live Activity follows a long reply from a server.</li>
+    <li><strong>Email:</strong> <span class="path">Settings → Email</span> connects an inbox over IMAP so the assistant can check and summarise it. Gmail and iCloud need an app-specific password.</li>
+  </ul>
+</section>
+
+<section id="media">
+  <h2>11. Image and video generation</h2>
+  <p>MyLLM creates images (FLUX.2-klein) and video (Wan 2.2 TI2V-5B) on <strong>your own ComfyUI server</strong>, with no cloud and no per-image fees.</p>
+  <ol>
+    <li>Open <span class="path">Settings → Image &amp; Video Generation</span>.</li>
+    <li>Enter your ComfyUI address and, if it needs one, the token (kept in the iOS Keychain).</li>
+    <li>Tap <em>Test ComfyUI</em>, then generate from the Media screen.</li>
+  </ol>
+  <p>A GPU with 16–24 GB, or an Apple Silicon Mac with 32 GB or more, is recommended; 8 GB works, but slowly. To use your own pipeline, export a workflow from ComfyUI in API format and paste it into <em>Custom workflow JSON…</em>. There's a separate slot for images and for video. The <a href="/myllm/wiki/#media">catalogue page</a> has the full hardware table and the node IDs the on-screen controls drive.</p>
+</section>
+
+<section id="price">
+  <h2>12. Price</h2>
+  <p>Free for 7 days with everything included. Then £0.99 a month, £9.99 a year, or £29.99 once for life (UK prices). There are no ads and no tiers: every option unlocks everything. <span class="path">Settings → MyLLM Full Version</span> shows what you have and restores a past purchase.</p>
+</section>
+
+<section id="android">
+  <h2>13. Android</h2>
+  <p>MyLLM for Android (<a href="https://play.google.com/store/apps/details?id=com.opticell.myllm">Google Play</a>) covers the same core: chat, models on the phone, your own server or API key, tools and documents. This guide follows the iPhone app. Some screens are arranged differently on Android, and iPhone-only features such as Siri, widgets and room scanning aren't there.</p>
+</section>
+
+<section id="troubleshooting">
+  <h2>14. Troubleshooting</h2>
+  <dl>
+    <dt>MyLLM can't reach my server.</dt>
+    <dd>Make sure the phone and computer are on the same network, and that Ollama was started with <code>OLLAMA_HOST=0.0.0.0</code> (LM Studio: <em>Serve on Local Network</em>). Use the computer's local IP address, not <code>localhost</code>. Away from home, use MyLLM Connect, or HTTPS with a token.</dd>
+    <dt>The assistant forgets earlier messages.</dt>
+    <dd>On the phone's model, check whether <em>Short memory</em> is on (<span class="path">Settings → On this iPhone → What the model reads</span>). On your own server, raise the context window (see <a href="#connection">Choosing who answers</a>) if the model and computer allow it.</dd>
+    <dt>It says it will use a tool, then doesn't.</dt>
+    <dd>Smaller models use tools less reliably. On the phone, pick a model marked TOOLS. On a server, 8B or larger works best. Agent Mode lets the assistant carry on over more steps.</dd>
+    <dt>A model won't download or load.</dt>
+    <dd>The Models list only offers what your phone's memory can hold. Free some storage, keep MyLLM open on Wi-Fi for the first download, then run <em>Self-test</em>.</dd>
+    <dt>Is my data sent anywhere?</dt>
+    <dd>With the phone's model, nothing leaves the device unless a tool goes online, and the ledger shows when one did. With a server or API key, messages go only there.</dd>
+  </dl>
+</section>
+
+<footer>
+  <p>Still stuck? Ask MyLLM itself, or visit the <a href="https://www.opticell-limited.com/myllm">official site</a>. See also: <a href="/myllm/">MyLLM facts</a> · <a href="/myllm/wiki/">Tools, skills &amp; apps catalogue</a> · <a href="/llms.txt">llms.txt</a>.</p>
+  <p>MyLLM is a product of Opticell Limited (UK). This guide is updated with each release.</p>
+</footer>
+</main>
+</body>
+</html>
