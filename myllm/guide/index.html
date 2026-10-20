@@ -307,11 +307,11 @@ footer{color:var(--muted);font-size:14px;margin-top:26px}
 
 <section id="media">
   <h2>12. Image and video generation</h2>
-  <p>MyLLM creates images (FLUX.2-klein) and video (Wan 2.2 TI2V-5B) on <strong>your own ComfyUI server</strong>, with no cloud and no per-image fees.</p>
+  <p>MyLLM creates images (FLUX 3 Image Klein or FLUX.2 Klein, whichever your server has) and video (Wan 2.2 TI2V-5B) on <strong>your own ComfyUI server</strong>, with no cloud and no per-image fees. New to this? <a href="/myllm/image-server.html">Run your own image server</a> lists exactly what to install.</p>
   <ol>
     <li>Open <span class="path">Settings → Image &amp; Video Generation</span>.</li>
     <li>Enter your ComfyUI address and, if it needs one, the token (kept in the iOS Keychain).</li>
-    <li>Tap <em>Test ComfyUI</em>, then generate from the Media screen.</li>
+    <li>Tap <em>Test ComfyUI</em>. It says which image model it found, or which files are missing. Then generate from the Create screen.</li>
   </ol>
   <p>A GPU with 16–24 GB, or an Apple Silicon Mac with 32 GB or more, is recommended; 8 GB works, but slowly. To use your own pipeline, export a workflow from ComfyUI in API format and paste it into <em>Custom workflow JSON…</em>. There's a separate slot for images and for video. The <a href="/myllm/wiki/#media">catalogue page</a> has the full hardware table and the node IDs the on-screen controls drive.</p>
 </section>

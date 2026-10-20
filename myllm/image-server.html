@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Server Setup</title>
+<meta name="description" content="How to run your own ComfyUI image server for MyLLM: the FLUX 3 Image Klein or FLUX.2 Klein 4B files to install, where they go, and how to connect MyLLM on iPhone, iPad and Mac.">
+<link rel="canonical" href="https://teamdzx.github.io/myllm/image-server.html">
+<meta property="og:title" content="Run your own image server for MyLLM">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://teamdzx.github.io/myllm/image-server.html">
+<meta name="theme-color" content="#4475fc">
+<style>
+:root{--bg:#f2f2f7;--card:#fff;--ink:#1c1c1e;--muted:#6c6c70;--line:#e5e5ea;--accent:#4475fc;--accent-soft:rgba(68,117,252,.10);--code:#ececf1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--card:#1c1c1e;--ink:#f2f2f7;--muted:#a1a1a6;--line:#2c2c2e;--accent:#6595ff;--accent-soft:rgba(101,149,255,.14);--code:#2c2c2e}}
+:root[data-theme="dark"]{--bg:#000;--card:#1c1c1e;--ink:#f2f2f7;--muted:#a1a1a6;--line:#2c2c2e;--accent:#6595ff;--accent-soft:rgba(101,149,255,.14);--code:#2c2c2e}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:800px;margin:0 auto;padding:44px 16px 64px}
+.eyebrow{margin:0 0 8px;color:var(--accent);font-weight:600;font-size:14px;letter-spacing:.02em;text-transform:uppercase}
+.eyebrow a{color:inherit;text-decoration:none}
+h1{font-size:clamp(30px,6vw,42px);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}
+.lede{font-size:19px;color:var(--muted);margin:0 0 10px}
+.stamp{font-size:14px;color:var(--muted);margin:0 0 24px}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin:0 0 20px}
+nav.toc h2{font-size:15px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:0 0 8px}
+nav.toc ol{columns:2;column-gap:28px;margin:0;padding-left:22px}
+@media (max-width:560px){nav.toc ol{columns:1}}
+nav.toc li{margin:0 0 4px;break-inside:avoid}
+section{background:var(--card);border-radius:18px;padding:22px 22px 10px;margin:0 0 16px;border:1px solid var(--line)}
+h2{font-size:23px;margin:0 0 10px;letter-spacing:-.01em}
+h3{font-size:18px;margin:20px 0 6px}
+p{margin:0 0 12px}
+ul,ol{padding-left:22px;margin:0 0 12px}
+li{margin:0 0 6px}
+.path{font-weight:600;white-space:nowrap}
+@media (max-width:560px){.path{white-space:normal}}
+code{background:var(--code);border-radius:6px;padding:1px 6px;font:14px ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}
+pre{background:var(--code);border-radius:10px;padding:12px 14px;overflow-x:auto;font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;margin:0 0 12px}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:4px 0 14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.03em}
+.tablewrap{overflow-x:auto}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin:6px 0 16px}
+@media (max-width:560px){.shots{grid-template-columns:1fr 1fr;gap:12px}}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border-radius:22px;border:1px solid var(--line);background:var(--bg)}
+figcaption{font-size:13px;color:var(--muted);text-align:center;margin-top:6px;line-height:1.35}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:0 0 14px}
+.links a{display:block;padding:12px 14px;border-radius:14px;background:var(--accent-soft);text-decoration:none}
+.links a strong{display:block}
+.links a span{color:var(--muted);font-size:14px}
+.tip{background:var(--accent-soft);border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:16px}
+dt{font-weight:600;margin-top:14px}
+dd{margin:4px 0 0;color:var(--muted)}
+a{color:var(--accent)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px}
+.cta a{display:inline-block;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px;background:var(--accent-soft);color:var(--accent)}
+.cta a.primary{background:var(--accent);color:#fff}
+footer{color:var(--muted);font-size:14px;margin-top:26px}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <p class="eyebrow"><a href="/myllm/">MyLLM</a> · <a href="/myllm/guide/">User guide</a> · Image server</p>
+  <h1>Run your own image server</h1>
+  <p class="lede">MyLLM makes pictures and video on a ComfyUI server that you run. This page shows what to install so it works.</p>
+  <p class="stamp">For MyLLM 6.0.1 on iPhone, iPad and Mac · updated 20 October 2026</p>
+</header>
+
+<div class="tip"><strong>Short version:</strong> install ComfyUI, put the FLUX 3 Image Klein files (or the FLUX.2 Klein 4B files) in its <code>models</code> folders, then enter the server's address in <span class="path">Settings → Image &amp; Video Generation</span> and tap <em>Test ComfyUI</em>. It tells you which model it found, or which files are missing.</div>
+
+<nav class="toc" aria-label="Contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#need">What you need</a></li>
+    <li><a href="#comfy">Install ComfyUI</a></li>
+    <li><a href="#flux3">Model option A: FLUX 3 Image Klein</a></li>
+    <li><a href="#flux2">Model option B: FLUX.2 Klein 4B</a></li>
+    <li><a href="#video">Video (optional)</a></li>
+    <li><a href="#reach">Reaching it from your phone</a></li>
+    <li><a href="#connect">Connect MyLLM</a></li>
+    <li><a href="#custom">Your own workflow</a></li>
+    <li><a href="#trouble">Troubleshooting</a></li>
+  </ol>
+</nav>
+
+<section id="need">
+  <h2>1. What you need</h2>
+  <ul>
+    <li>A computer that stays on while you make pictures: a PC with an NVIDIA graphics card, or an Apple Silicon Mac.</li>
+    <li>About 8 GB of graphics memory for FLUX 3's int8 build or FLUX.2 Klein 4B. More memory is faster and allows the full-size builds.</li>
+    <li>15–25 GB of free disk space for the model files.</li>
+  </ul>
+  <p>MyLLM checks which model your server has each time and shows the matching controls. You can switch models on the server later without changing anything in the app.</p>
+</section>
+
+<section id="comfy">
+  <h2>2. Install ComfyUI</h2>
+  <p>ComfyUI is free and open source. Install it from <a href="https://www.comfy.org/download">comfy.org/download</a> (desktop app for Windows and Mac) or from <a href="https://github.com/comfyanonymous/ComfyUI">its GitHub page</a>, and keep it up to date: the FLUX 3 nodes need a recent version.</p>
+  <p>The model files below go in the folders inside ComfyUI's <code>models</code> folder: <code>diffusion_models</code>, <code>text_encoders</code> and <code>vae</code>. Restart ComfyUI after adding files.</p>
+</section>
+
+<section id="flux3">
+  <h2>3. Model option A: FLUX 3 Image Klein</h2>
+  <p>The newer model, with instruction photo edits ("make it a rainy night") and an optional prompt upsampler that powers <em>Enhance prompt</em>. The files are on Black Forest Labs' <a href="https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy">flux-3-image-klein-comfy</a> page. You need a Hugging Face account and must accept their licence there first. It is the FLUX Kommunity licence, non-commercial unless BFL says otherwise, so read it.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Folder</th><th>File</th><th>Notes</th></tr>
+    <tr><td><code>diffusion_models</code></td><td><code>flux3-image-klein-int8-convrot.safetensors</code></td><td>Runs on 8 GB cards. Use <code>-nvfp4</code> on an RTX 50-series (Blackwell) card, or <code>-bf16</code> with lots of memory. Not the <code>-base-</code> files.</td></tr>
+    <tr><td><code>text_encoders</code></td><td><code>qwen3vl_4b_int8_convrot.safetensors</code></td><td>Required. The <code>bf16</code> build also works.</td></tr>
+    <tr><td><code>vae</code></td><td><code>flux2-vae.safetensors</code></td><td>Required (it is shared with FLUX.2).</td></tr>
+    <tr><td><code>text_encoders</code></td><td><code>qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors</code></td><td>Optional. Turns on <em>Enhance prompt</em> and sharper edits. Without it, prompts go to the model as you wrote them.</td></tr>
+  </table></div>
+  <p>Comfy's announcement, with their own workflow templates: <a href="https://blog.comfy.org/p/flux-3-image-klein-in-comfyui-56b">FLUX 3 Image Klein in ComfyUI</a>.</p>
+</section>
+
+<section id="flux2">
+  <h2>4. Model option B: FLUX.2 Klein 4B</h2>
+  <p>The previous model. It is lighter, still good, and what MyLLM used before 6.0.1. Photo edits redraw the picture from your prompt, with a <em>Strength</em> slider. File names and links follow ComfyUI's <a href="https://docs.comfy.org/tutorials/flux/flux-2-klein">FLUX.2 Klein tutorial</a>:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Folder</th><th>File</th><th>From</th></tr>
+    <tr><td><code>diffusion_models</code></td><td><code>flux-2-klein-4b-fp8.safetensors</code></td><td><a href="https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8">black-forest-labs/FLUX.2-klein-4b-fp8</a></td></tr>
+    <tr><td><code>text_encoders</code></td><td><code>qwen_3_4b.safetensors</code></td><td><a href="https://huggingface.co/Comfy-Org/flux2-klein-4B">Comfy-Org/flux2-klein-4B</a> (<code>split_files/text_encoders</code>)</td></tr>
+    <tr><td><code>vae</code></td><td><code>flux2-vae.safetensors</code></td><td><a href="https://huggingface.co/Comfy-Org/flux2-dev">Comfy-Org/flux2-dev</a> (<code>split_files/vae</code>)</td></tr>
+  </table></div>
+  <p>Check each model card for its licence before any commercial use. If both models are installed, MyLLM uses FLUX 3.</p>
+</section>
+
+<section id="video">
+  <h2>5. Video (optional)</h2>
+  <p>Video uses Wan 2.2 TI2V-5B: <code>wan2.2_ti2v_5B_fp16.safetensors</code> in <code>diffusion_models</code>, <code>umt5_xxl_fp8_e4m3fn_scaled.safetensors</code> in <code>text_encoders</code> and <code>wan2.2_vae.safetensors</code> in <code>vae</code>, plus the Video Helper Suite custom nodes. It is much heavier than pictures: 16 GB or more makes it practical. See the <a href="/myllm/wiki/#media">catalogue page</a> for the full hardware table.</p>
+</section>
+
+<section id="reach">
+  <h2>6. Reaching it from your phone</h2>
+  <ul>
+    <li><strong>At home, same Wi-Fi:</strong> start ComfyUI with <code>--listen</code> so other devices can reach it, then use <code>http://&lt;computer's address&gt;:8188</code>. Plain HTTP is fine on your own network only.</li>
+    <li><strong>Away from home:</strong> don't expose ComfyUI to the internet as it is, because it has no password. Use a private network such as <a href="https://tailscale.com">Tailscale</a> (its <code>tailscale serve</code> gives you an HTTPS address only your devices can reach), or put it behind a reverse proxy that requires a bearer token. MyLLM sends the token from Settings as <code>Authorization: Bearer …</code>.</li>
+  </ul>
+</section>
+
+<section id="connect">
+  <h2>7. Connect MyLLM</h2>
+  <ol>
+    <li>Open <span class="path">Settings → Image &amp; Video Generation</span>.</li>
+    <li>Enter the server's address and, if your proxy needs one, the token. The token is kept in the iOS Keychain.</li>
+    <li>Tap <em>Test ComfyUI</em>. You should see "Connected to ComfyUI. Images: FLUX 3 Image Klein" (or FLUX.2 Klein). If files are missing, it names them.</li>
+    <li>Make pictures from the <em>Create</em> screen, ask for one in chat ("draw me a lighthouse at dusk"), or let MyLLMos apps use it.</li>
+  </ol>
+</section>
+
+<section id="custom">
+  <h2>8. Your own workflow</h2>
+  <p>Prefer your own pipeline? Build it in ComfyUI, then use <em>Save → Export (API Format)</em> and paste the JSON into <span class="path">Settings → Image &amp; Video Generation → Custom workflow JSON…</span>. MyLLM always uses a pasted workflow as it is. It fills in the prompt, seed and size by node number. The node numbers for each model are listed under that field in the app.</p>
+</section>
+
+<section id="trouble">
+  <h2>9. Troubleshooting</h2>
+  <dl>
+    <dt>"Your ComfyUI server doesn't have an image model MyLLM can use"</dt>
+    <dd>A file from the tables above is missing or in the wrong folder. The message lists which ones. Restart ComfyUI after adding them, then tap <em>Test ComfyUI</em> again.</dd>
+    <dt>"Unauthorized — check your ComfyUI bearer token"</dt>
+    <dd>Your proxy rejected the token. Copy it again into Settings.</dd>
+    <dt>"ComfyUI rejected the workflow"</dt>
+    <dd>Usually an older ComfyUI that doesn't have the FLUX 3 nodes yet. Update ComfyUI. With a custom workflow, check that its node numbers match.</dd>
+    <dt>No <em>Enhance prompt</em> switch</dt>
+    <dd>The optional prompt upsampler file isn't installed. Everything else works without it.</dd>
+    <dt>The first picture takes much longer</dt>
+    <dd>ComfyUI loads the models into memory on the first request. Later pictures skip that.</dd>
+  </dl>
+</section>
+
+<footer>MyLLM is made by <a href="https://www.opticell-limited.com">Opticell Limited</a>. FLUX is a trademark of Black Forest Labs; ComfyUI is a Comfy Org project. MyLLM isn't affiliated with either.</footer>
+</main>
+</body>
+</html>
