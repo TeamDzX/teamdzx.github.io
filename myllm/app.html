@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MyLLM App Gallery</title>
+<meta name="description" content="An app from the MyLLM App Gallery: small apps that run inside MyLLM, on your iPhone, iPad or Mac.">
+<meta property="og:title" content="An app from the MyLLM App Gallery">
+<meta property="og:description" content="Small apps that run inside MyLLM, on your iPhone, iPad or Mac.">
+<meta property="og:type" content="website">
+<style>
+:root{--bg:#f2f2f7;--card:#fff;--ink:#1c1c1e;--muted:#6c6c70;--line:#e5e5ea;--accent:#4475fc;--chip:#ececf1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--card:#1c1c1e;--ink:#f2f2f7;--muted:#a1a1a6;--line:#2c2c2e;--accent:#6595ff;--chip:#2c2c2e}}
+:root[data-theme="dark"]{--bg:#000;--card:#1c1c1e;--ink:#f2f2f7;--muted:#a1a1a6;--line:#2c2c2e;--accent:#6595ff;--chip:#2c2c2e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:720px;margin:0 auto;padding:36px 16px 64px}
+.eyebrow{margin:0 0 14px;color:var(--accent);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.02em}
+.eyebrow a{color:inherit;text-decoration:none}
+article{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.banner{aspect-ratio:16/9;background:var(--chip) center/cover no-repeat}
+.body{padding:20px 22px 24px}
+.head{display:flex;gap:16px;align-items:center;margin-bottom:16px}
+.icon{width:84px;height:84px;flex:none;border-radius:20px;display:grid;place-items:center;font-size:42px;background:var(--chip) center/cover no-repeat;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+h1{font-size:clamp(24px,5vw,32px);line-height:1.15;margin:0;letter-spacing:-.01em}
+.tagline{color:var(--muted);margin:4px 0 0}
+.meta{color:var(--muted);font-size:14px;margin:2px 0 0}
+.buttons{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.btn{display:inline-block;padding:11px 20px;border-radius:999px;font-weight:600;text-decoration:none;font-size:16px}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.secondary{background:var(--chip);color:var(--accent)}
+.desc{white-space:pre-line;margin:0 0 14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.tags span{background:var(--chip);border-radius:999px;padding:3px 10px;font-size:13px}
+.note{color:var(--muted);font-size:14px;margin:18px 4px 0}
+.missing{padding:28px 22px}
+footer{color:var(--muted);font-size:13px;margin-top:22px;text-align:center}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<main>
+<p class="eyebrow"><a href="./">MyLLM</a> · App Gallery</p>
+<article id="card" aria-live="polite">
+  <div class="missing" id="status">Loading…</div>
+</article>
+<p class="note">Gallery apps run inside MyLLM, sandboxed on your device. In MyLLM, open the App Gallery and tap GET to install one.</p>
+<footer><a href="privacy.html">Privacy</a> · © Opticell Ltd</footer>
+</main>
+<script>
+// One app's page, for links shared from the MyLLM App Gallery (6.5.1):
+// app.html?id=<gallery id>. Reads the public gallery manifest; nothing is stored or sent.
+(function () {
+  var APP_STORE = "https://apps.apple.com/app/myllm-local-ai-agent/id6760704297";
+  var MANIFEST = "https://raw.githubusercontent.com/TeamDzX/myllm-assets/main/apps.json";
+  var COLORS = { blue: "#007aff", purple: "#af52de", pink: "#ff2d55", red: "#ff3b30", orange: "#ff9500",
+                 yellow: "#ffcc00", green: "#34c759", mint: "#00c7be", teal: "#30b0c7", cyan: "#32ade6",
+                 indigo: "#5856d6", brown: "#a2845e", gray: "#8e8e93" };
+  var card = document.getElementById("card");
+  var id = new URLSearchParams(location.search).get("id") || "";
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function link(text, href, cls) { var a = el("a", "btn " + cls, text); a.href = href; return a; }
+  function cssURL(u) { return 'url("' + String(u).replace(/["\\\n]/g, "") + '")'; }
+  function safeHTTP(u) { return typeof u === "string" && /^https:\/\//.test(u); }
+
+  function show(app) {
+    document.title = app.name + " · MyLLM App Gallery";
+    card.textContent = "";
+    if (safeHTTP(app.banner)) {
+      var b = el("div", "banner");
+      b.style.backgroundImage = cssURL(app.banner);
+      b.setAttribute("role", "img");
+      b.setAttribute("aria-label", app.name);
+      card.appendChild(b);
+    }
+    var body = el("div", "body");
+    var head = el("div", "head");
+    var icon = el("div", "icon");
+    if (safeHTTP(app.icon)) icon.style.backgroundImage = cssURL(app.icon);
+    else { icon.textContent = app.emoji || "📱"; icon.style.background = COLORS[app.iconColor] || "var(--chip)"; }
+    icon.setAttribute("aria-hidden", "true");
+    var names = el("div");
+    names.appendChild(el("h1", null, app.name));
+    if (app.tagline) names.appendChild(el("p", "tagline", app.tagline));
+    names.appendChild(el("p", "meta", (app.category || "App") + (app.requiresAI ? " · uses AI" : "")));
+    head.appendChild(icon); head.appendChild(names);
+    body.appendChild(head);
+
+    var buttons = el("div", "buttons");
+    buttons.appendChild(link("Open in MyLLM", "myllm://gallery?app=" + encodeURIComponent(app.id), "primary"));
+    buttons.appendChild(link("Get MyLLM", APP_STORE, "secondary"));
+    body.appendChild(buttons);
+
+    body.appendChild(el("p", "desc", app.description || ""));
+    if (app.tags && app.tags.length) {
+      var tags = el("p", "tags");
+      app.tags.forEach(function (t) { tags.appendChild(el("span", null, t)); });
+      body.appendChild(tags);
+    }
+    card.appendChild(body);
+  }
+
+  function missing(text) {
+    card.textContent = "";
+    var box = el("div", "missing");
+    box.appendChild(el("p", null, text));
+    var buttons = el("div", "buttons");
+    buttons.appendChild(link("Get MyLLM", APP_STORE, "primary"));
+    box.appendChild(buttons);
+    card.appendChild(box);
+  }
+
+  fetch(MANIFEST, { cache: "no-cache" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (m) {
+      var app = (m.apps || []).filter(function (a) { return a.id === id; })[0];
+      if (app) show(app);
+      else missing(id ? "This app isn't in the MyLLM App Gallery any more." : "No app was named in this link.");
+    })
+    .catch(function () { missing("The App Gallery couldn't be reached just now. Try again in a moment."); });
+})();
+</script>
+</body>
+</html>
